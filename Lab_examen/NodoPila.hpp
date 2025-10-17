@@ -4,9 +4,16 @@
 class NodoPila
 {
 public:
-    NodoPila();
+    NodoPila(int v, NodoPila* sig = nullptr);
     ~NodoPila();
 
+private:
+    int valor;
+    NodoPila* siguiente;
+
+    friend class Pila;
 };
+
+typedef NodoPila* pnodoPila;
 
 #endif // NODOPILA_HPP
