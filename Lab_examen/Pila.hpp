@@ -9,9 +9,9 @@ public:
     Pila();
     ~Pila();
 
-    void insertar(int v);
-    int extraer();
-    int cima() const;
+    void insertar(Aficionado afic);
+    Aficionado extraer();
+    Aficionado cima() const;
     void mostrar() const;
     int getLongitud() const;
 

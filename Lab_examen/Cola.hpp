@@ -2,17 +2,18 @@
 #define COLA_HPP
 
 #include "NodoCola.hpp"
+#include "Aficionado.hpp"
 
-class Cola
-{
+class Cola {
 public:
     Cola();
     ~Cola();
 
-    void insertar(int v);
-    int eliminar();
-    void mostrar();
-    int verPrimero();
+    void insertar(Aficionado afic);
+    Aficionado eliminar();
+    void mostrar() const;
+    Aficionado verPrimero() const;
+    int getLongitud() const;
 
 private:
     pnodoCola primero, ultimo;

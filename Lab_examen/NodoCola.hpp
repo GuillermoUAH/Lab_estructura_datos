@@ -1,14 +1,15 @@
 #ifndef NODOCOLA_HPP
 #define NODOCOLA_HPP
 
-class NodoCola
-{
+#include "Aficionado.hpp"
+
+class NodoCola {
 public:
-    NodoCola(int v, NodoCola* sig = nullptr);
+    NodoCola(Aficionado afic, NodoCola* sig = nullptr);
     ~NodoCola();
 
 private:
-    int valor;
+    Aficionado valor;
     NodoCola* siguiente;
 
     friend class Cola;

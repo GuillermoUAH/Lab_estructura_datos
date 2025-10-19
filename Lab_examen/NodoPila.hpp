@@ -1,14 +1,15 @@
 #ifndef NODOPILA_HPP
 #define NODOPILA_HPP
 
-class NodoPila
-{
+#include "Aficionado.hpp"
+
+class NodoPila {
 public:
-    NodoPila(int v, NodoPila* sig = nullptr);
+    NodoPila(Aficionado afic, NodoPila* sig = nullptr);
     ~NodoPila();
 
 private:
-    int valor;
+    Aficionado valor;
     NodoPila* siguiente;
 
     friend class Pila;

@@ -1,10 +1,8 @@
 #include "NodoLista.hpp"
 
-NodoLista::NodoLista()
-{
+NodoLista::NodoLista(Aficionado afic, NodoLista* sig) {
+    valor = afic;
+    siguiente = sig;
 }
 
-NodoLista::~NodoLista()
-{
-}
-
+NodoLista::~NodoLista() {}

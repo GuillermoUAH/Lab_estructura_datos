@@ -1,18 +1,20 @@
 #include "Cola.hpp"
 #include <iostream>
 
-using namespace std;
-
-Cola::Cola()
-{
+Cola::Cola() {
     primero = nullptr;
     ultimo = nullptr;
     longitud = 0;
 }
 
-void Cola::insertar(int v)
-{
-    pnodoCola nuevo = new NodoCola(v);
+Cola::~Cola() {
+    while (primero) {
+        eliminar();
+    }
+}
+
+void Cola::insertar(Aficionado afic) {
+    pnodoCola nuevo = new NodoCola(afic);
     if (ultimo)
         ultimo->siguiente = nuevo;
     ultimo = nuevo;
@@ -21,47 +23,34 @@ void Cola::insertar(int v)
     longitud++;
 }
 
-int Cola::eliminar()
-{
-    if (!primero)
-        return 0;
+Aficionado Cola::eliminar() {
+    if (!primero) throw std::runtime_error("Cola vacía");
 
     pnodoCola nodo = primero;
-    int v = nodo->valor;
-
+    Aficionado afic = nodo->valor;
     primero = nodo->siguiente;
     if (!primero)
         ultimo = nullptr;
 
     delete nodo;
     longitud--;
-    return v;
+    return afic;
 }
 
-void Cola::mostrar()
-{
+void Cola::mostrar() const {
     pnodoCola aux = primero;
-    cout << "El contenido de la cola es: ";
-    while (aux)
-    {
-        cout << "-> " << aux->valor << " ";
+    std::cout << "Contenido de la cola:\n";
+    while (aux) {
+        aux->valor.mostrar();
         aux = aux->siguiente;
     }
-    cout << endl;
 }
 
-int Cola::verPrimero()
-{
-    if (!primero)
-    {
-        cout << "Cola vacía" << endl;
-        return -1;  // o el valor que prefieras para indicar vacío
-    }
+Aficionado Cola::verPrimero() const {
+    if (!primero) throw std::runtime_error("Cola vacía");
     return primero->valor;
 }
 
-Cola::~Cola()
-{
-    while (primero)
-        eliminar();
+int Cola::getLongitud() const {
+    return longitud;
 }
